@@ -31,7 +31,7 @@ else:
     DEFAULT_INDEX = 0
 
 with st.sidebar:
-    logo = Image.open("images/WOMER_LOGO HORIZONTAL.png")
+    logo = Image.open("images/WOMER_LOGO_HORIZONTAL.png")
     st.image(logo, use_column_width=True)
 
     selected = option_menu(
