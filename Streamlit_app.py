@@ -16,10 +16,6 @@ st.set_page_config(page_title="Womer", page_icon="🌍", layout="wide")
 
 apps = [
     {"func": information.app, "title": "Datos básicos", "icon": "house"},
-    {"func": natural_resources.app, "title": "Acceso a recursos naturales", "icon": "geo-alt"},
-    {"func": climate.app, "title": "Cambio climático", "icon": "hourglass-split"},
-    {"func": participation.app, "title": "Participación", "icon": "geo-alt"},
-    {"func": knowledge.app, "title": "Saberes Tradicionales", "icon": "geo-alt"},
     {"func": about.app, "title": "Acerca de", "icon": "info"},
 ]
 
