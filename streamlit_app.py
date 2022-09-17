@@ -16,7 +16,7 @@ st.set_page_config(page_title="Womer", page_icon="🌍", layout="wide")
 
 apps = [
     {"func": home.app, "title": "home", "icon": "house"},
-     {"func": information.app, "title": "Datos básicos", "icon": "house"},
+    {"func": information.app, "title": "Datos básicos", "icon": "house"},
     {"func": about.app, "title": "Acerca de", "icon": "info"},
 ]
 
