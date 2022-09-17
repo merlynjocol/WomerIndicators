@@ -4,7 +4,7 @@ Streamlit App
 # pylint: disable=wrong-import-order
 
 import streamlit as st
-from apps import information, natural_resources, climate, about, participation, knowledge 
+from apps import information, about
 from streamlit_option_menu import option_menu
 from PIL import Image
 
