@@ -99,11 +99,11 @@ def app():
 
     # funtion to create dataframe
     def newframe(df):
-    return (df.to_frame().reset_index())
+        return (df.to_frame().reset_index())
 
     # funtion to change name and 1 decimal
     def onedecimal(df):
-    return (df.reset_index(name='value').round(decimals = 1))
+        return (df.reset_index(name='value').round(decimals = 1))
 
 
     # JEFATURA de hogares. Total Mujeres Cabeza de Hogar 
