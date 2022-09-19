@@ -7,10 +7,17 @@ This project is part of the #Open17ClimateGender challenge to develop crowdsourc
 #### **Author:** [Merlyn J. Hurtado](https://github.com/merlynjocol)
 
 ## Data indicators: 
-- Access to Natural Resources: Measure the access to Natural Resources in time and type, including water,land and energy sources
-- Time invested caring nature: Measure the Time investment in regenerating and preserving nature
-- Climate Actions: Inventory of the practices of conservation and proteccion of land, water, biodiversity, ecosystem services
-- Power decision-making: Measure the level of participation of women in environmental decision making
+33 indicators  based on official reports and data gap reports in five areas: 
+
+- Right to land (ownership and rights)
+
+-  Access to natural resources ( availability, time and quality)
+
+- Climate impacts (livelihoods and food)
+
+- Participation of women in environmental decision making
+
+- Traditional knowledge
 
 ## Tools
 
