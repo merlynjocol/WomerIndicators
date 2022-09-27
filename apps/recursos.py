@@ -76,7 +76,8 @@ def app():
     """
     st.title("⚫ Indicadores de acceso a Recursos Naturales ")
     st.markdown ('---')
-
+     st.subheader("Its an example")  
+    st.markdown ('---')
 
     
     # MULTIPAGES SELECTOR 
