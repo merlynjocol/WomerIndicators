@@ -573,7 +573,8 @@ def app():
         
 
         indicator = st.selectbox("SELECCIONE UN INDICADOR",
-        ("Tiempo dedicado a recolectar plantas, hongos, flores y frutos silvestres; Pesca y caza para consumo doméstico",
+        ("Tiempo dedicado a recolectar plantas, hongos, flores y frutos silvestres de los bosques",
+        "Quien recolecta los alimentos silvestres",
          "Tiempo dedicado a la caza y la pesca para el consumo doméstico",
          'Tipo de estufa utilizada para cocinar',
          "Proporción de hogares que utilizan estufas con chimenea",
@@ -588,7 +589,7 @@ def app():
             st.stop()
 
 
-        if indicator == "Tiempo dedicado a recolectar plantas, hongos, flores y frutos silvestres; Pesca y caza para consumo doméstico":
+        if indicator == "Tiempo dedicado a recolectar plantas, hongos, flores y frutos silvestres de los bosques":
 
             # tiempo en cocinar alimentos 
             time_wild_food =  percentage(df.time_wild_food)
@@ -607,6 +608,55 @@ def app():
                                 )
             fig.update_layout(title = format_title("Tiempo invertido en Recolectar Alimentos ",
                                                 "Del bosque y otros espacios"),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
+
+        if indicator == "Quien recolecta los alimentos silvestres":
+
+            # tiempo en cocinar alimentos 
+            who_wild_food=  percentage(df.who_wild_food)
+            who_wild_food = who_wild_food.sort_values('index')
+
+            df_wild_food = pd.DataFrame({'index': ["Hombre mayor de 15 años ",
+                                                "Niña menor de 15 años",
+                                                    "Niño menor de 15 años",
+                                                    "No sé",
+                                                    "No se recolecta alimentos para el hogar "], 'who_wild_food': [0,0,0,0,0],
+                                                    })
+
+            # Append the rows of the above pandas DataFrame to the existing pandas DataFrame
+            who_wild_food = who_wild_food.append(df_wild_food,ignore_index=True)
+
+            # stablishing catgeories 
+            categories = CategoricalDtype(["Yo ",
+                                            "Mujer mayor de 15 años diferente a mi ",
+                                            "Hombre mayor de 15 años ",
+                                            "Niña menor de 15 años",
+                                            "Niño menor de 15 años",
+                                            "No sé",
+                                            "No se recolecta alimentos para el hogar "
+                                            ])
+
+            who_wild_food["index"] = who_wild_food["index"].astype(categories)
+            who_wild_food= who_wild_food.sort_values('index')    
+
+            #chart
+            colors = ['lightslategray']*len(df)
+            colors[ 1 ] = 'crimson'
+            #opacity = 0.8
+            fig = px.bar(who_wild_food, x="who_wild_food", y="index",  
+                                width=600, height=300, 
+                                labels={ 'who_wild_food': 'Proporción de Mujeres(%)',  'index': 'Tiempo invertido)'},
+                                template = "simple_white", orientation='h'
+                                )
+            fig.update_layout(title = format_title("¿Quien recolecta los alimentos?",
+                                                "Plantas, flores, hongos y frutos del bosque y otros espacios"),
                             title_font_size = 20)
             fig.update_yaxes(tickmode="array", title_text= " ")                 
             fig.update_yaxes(showgrid=True)
