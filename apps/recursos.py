@@ -576,6 +576,7 @@ def app():
         ("Tiempo dedicado a recolectar plantas, hongos, flores y frutos silvestres de los bosques",
          "Quien recolecta los alimentos silvestres",
          "Tiempo dedicado a la caza y la pesca para el consumo doméstico",
+         "Quien pesca y caza para el hogar", 
          'Tipo de estufa utilizada para cocinar',
          "Proporción de hogares que utilizan estufas con chimenea",
          "Tiempo dedicado a cocinar los alimentos",
@@ -698,6 +699,51 @@ def app():
                                 )
             fig.update_layout(title = format_title("Tiempo dedicado a la caza y la pesca",
                                                 "Para el consumo doméstico"),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
+
+
+        elif indicator == "Quien pesca y caza para el hogar":
+            # Who is hunting and fishing 
+            who_fishing=  percentage(df.who_fishing)
+            who_fishing = who_fishing.sort_values('index')
+
+            # Append the rows of the above pandas DataFrame to the existing pandas DataFrame
+            df_who_fishing = pd.DataFrame({'index': ["Niño menor de 15 años",
+                                                ], 'who_fishing': [0],
+                                                    })
+            who_fishing= who_fishing.append(df_who_fishing,ignore_index=True)
+
+            # stablishing categories 
+            categories = CategoricalDtype(["Yo ",
+                                            "Mujer mayor de 15 años diferente a mi ",
+                                            "Hombre mayor de 15 años ",
+                                            "Niña menor de 15 años",
+                                            "Niño menor de 15 años",
+                                            "No sé",
+                                            "No se pesca o caza "
+                                            ])
+
+            who_fishing["index"] = who_fishing["index"].astype(categories)
+            who_fishing= who_fishing.sort_values('index')            
+
+            #chart
+            colors = ['lightslategray']*len(df)
+            colors[ 1 ] = 'crimson'
+            fig = px.bar(who_fishing, x="who_fishing", y="index",  
+                                width=600, height=300, 
+                                labels={ 'who_fishing': 'Total de hogares',  'index': 'Persona'},
+                                template = "simple_white", orientation='h'
+                                )
+
+            fig.update_layout(title = format_title("¿Quien pesca o caza para el hogar?",
+                                                "Plantas, flores, hongos y frutos del bosque y otros espacios"),
                             title_font_size = 20)
             fig.update_yaxes(tickmode="array", title_text= " ")                 
             fig.update_yaxes(showgrid=True)
