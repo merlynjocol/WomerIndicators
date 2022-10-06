@@ -368,8 +368,8 @@ def app():
         
 
         indicator = st.selectbox("SELECCIONE UN INDICADOR",
-        ("Proporción de la población que utiliza (a) servicios de saneamiento gestionados de forma segura",
-         "Proporción de Mujeres con servicio de saneamiento. Por servicio"
+        ("Proporción de Mujeres que utiliza servicios de saneamiento gestionados de forma segura",
+         "Proporción de Mujeres segun servicio de saneamiento"
          'Proporción de Mujeres con servicios de saneamiento con puerta de seguridad e iluminación',
          "Proporción de mujeres que enfrentan riesgos al usar los servicios de saneamiento",
          "Proporción de la población que utiliza instalaciones para lavarse las manos con agua y jabón",
@@ -413,7 +413,7 @@ def app():
         sanitary_service= sanitary_service.sort_values('index')
         
         # Interactive visualization 
-        if indicator == "Proporción de la población que utiliza (a) servicios de saneamiento gestionados de forma segura":
+        if indicator == "Proporción de Mujeres que utiliza servicios de saneamiento gestionados de forma segura":
 
             colors = ['#DCDCDC',]*len(df)
             colors[ 0 ] = '#4086ce'
@@ -439,7 +439,7 @@ def app():
 
 
 
-        elif indicator == "Proporción de Mujeres con servicio de saneamiento. Por servicio":
+        elif indicator == "Proporción de Mujeres segun servicio de saneamiento"":
             def conditions(s):
                 if (s == 'Inodoro conectado a alcantarillado' ) or (s == 'Inodoro conectado a pozo o tanque séptico ' ) or (s ==  'Inodoro a drenaje abierto' ) : 
                     return "Servicio gestionado de manera segura"
