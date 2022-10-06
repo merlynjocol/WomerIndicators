@@ -665,3 +665,44 @@ def app():
             fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig, unsafe_allow_html=True)
+
+        
+        elif indicator == "Tiempo dedicado a la caza y la pesca para el consumo doméstico":
+            
+
+            # tiempo en hunting and fishing
+            time_fishing =  percentage(df.time_fishing)
+            time_fishing = time_fishing.sort_values('index')
+
+            # stablishing catgeories 
+            categories = CategoricalDtype([ 'Menos de 1 hora',
+                                        '1 hora ', 
+                                        '2 horas', 
+                                        '3 horas', 
+                                        '4 horas ',
+                                        'Más de 4 horas ', 
+                                        'No se '
+                                            ])
+
+            time_fishing["index"] = time_fishing["index"].astype(categories)
+            time_fishing = time_fishing.sort_values('index')
+
+
+            # CHART 
+            colors = ['lightslategray']*len(df)
+            colors[ 1 ] = 'crimson'
+            fig = px.bar(time_fishing, x="time_fishing", y="index",  
+                                width=600, height=300, 
+                                labels={ 'time_fishing': 'Proporción de Mujeres(%)',  'index': 'Tiempo invertido)'},
+                                template = "simple_white", orientation='h'
+                                )
+            fig.update_layout(title = format_title("Tiempo dedicado a la caza y la pesca",
+                                                "Para el consumo doméstico"),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
