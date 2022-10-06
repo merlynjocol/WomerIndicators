@@ -369,7 +369,7 @@ def app():
 
         indicator = st.selectbox("SELECCIONE UN INDICADOR",
         ("Proporción de Mujeres que utiliza servicios de saneamiento gestionados de forma segura",
-         "Proporción de Mujeres segun servicio de saneamiento"
+         "Proporción de Mujeres segun servicio de saneamiento",
          'Proporción de Mujeres con servicios de saneamiento con puerta de seguridad e iluminación',
          "Proporción de mujeres que enfrentan riesgos al usar los servicios de saneamiento",
          "Proporción de la población que utiliza instalaciones para lavarse las manos con agua y jabón",
