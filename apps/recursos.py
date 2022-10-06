@@ -363,7 +363,7 @@ def app():
     elif choice == 'Saneamiento': 
 
         #AGUA
-        st.subheader("## 🚾 Saneamiento / 5 indicadores")  
+        st.subheader("## 🚾 Saneamiento / 6 indicadores")  
         #st.markdown ('---')
         
 
