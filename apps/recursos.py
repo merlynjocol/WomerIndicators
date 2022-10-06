@@ -76,16 +76,14 @@ def app():
     """
     st.title("⚫ Indicadores de acceso a Recursos Naturales ")
     st.markdown ('---')
-    st.subheader("Its an example")  
-    st.markdown ('---')
 
     
     # MULTIPAGES SELECTOR 
     # create your radio button with the index that we loaded
 
     st.sidebar.markdown ('---')
-    st.sidebar.subheader("Selecciona el área")
-    choice = st.sidebar.radio(" ", ('Energía','Agua','Saneamiento', 'Alimentos' ))
+    st.subheader("Selecciona el área")
+    choice = st.radio(" ", ('Energía','Agua','Saneamiento', 'Alimentos y cocina' ))
 
     # df in percentage
     def percentage(column):
@@ -566,7 +564,7 @@ def app():
 
 
      
-    elif choice == 'Alimentos': 
+    elif choice == 'Alimentos y cocina': 
 
         st.subheader("## 🍓 Alimentos  / 6 indicadores")  
         #st.markdown ('---')
