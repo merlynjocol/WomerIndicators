@@ -162,7 +162,7 @@ def app():
             
            #title
             st. write("### Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpias")
-            st.write( "ODS7. Indicador 7.1.2. ')
+            st.write("ODS7. Indicador 7.1.2.")
         
             def conditions(s):
                 if (s == 'Lamparas solares' ): 
