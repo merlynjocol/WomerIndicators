@@ -617,7 +617,7 @@ def app():
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig, unsafe_allow_html=True)
 
-        if indicator == "Quien recolecta los alimentos silvestres":
+        elif indicator == "Quien recolecta los alimentos silvestres":
 
             # tiempo en cocinar alimentos 
             who_wild_food=  percentage(df.who_wild_food)
