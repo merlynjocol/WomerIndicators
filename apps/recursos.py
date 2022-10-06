@@ -650,7 +650,7 @@ def app():
      
     elif choice == 'Alimentos': 
 
-        st.subheader("## 🍓 Indicadores de acceso a Alimentos y Cocinas")  
+        st.subheader("## 🍓 Indicadores de acceso a Alimentos")  
         #st.markdown ('---')
         
 
