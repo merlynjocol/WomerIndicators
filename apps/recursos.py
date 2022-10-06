@@ -439,7 +439,7 @@ def app():
 
 
 
-        elif indicator == "Proporción de Mujeres segun servicio de saneamiento"":
+        elif indicator == "Proporción de Mujeres segun servicio de saneamiento":
             def conditions(s):
                 if (s == 'Inodoro conectado a alcantarillado' ) or (s == 'Inodoro conectado a pozo o tanque séptico ' ) or (s ==  'Inodoro a drenaje abierto' ) : 
                     return "Servicio gestionado de manera segura"
