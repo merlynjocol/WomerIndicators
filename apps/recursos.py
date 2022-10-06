@@ -130,8 +130,8 @@ def app():
         if indicator == "Proporción de la población que tiene acceso a la electricidad para iluminación": 
             
             #title
-            st.write("#### Proporción de la población que tiene acceso a la electricidad")
-            st.write( 'ODS7. Indicador 7.1.1.')
+            #st.write("#### Proporción de la población que tiene acceso a la electricidad")
+            st.write( '#### ODS7. Indicador 7.1.1.')
             st.write("En el marco de la meta .mundial de igualdad de acceso a la energía, el ODS 7.1.1 se centra específicamente en el acceso a la electricidad disponible para la población mundial. Para obtener una imagen clara, las tarifas de acceso solo se consideran si el fuente principal de iluminación es el proveedor local de electricidad, sistemas solares, mini-redes y autónomos sistemas Fuentes como generadores, velas, baterías, etc., no se consideran por su limitada capacidades de trabajo y dado que generalmente se mantienen como fuentes de respaldo para la iluminación")
 
             def conditions(s):
@@ -161,9 +161,9 @@ def app():
         elif indicator == 'Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpios':  
             
            #title
-            st. write("### Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpias")
-            st.write("ODS7. Indicador 7.1.2.")
-        
+            st.write("### ODS7. Indicador 7.1.2. ")
+            st. write("Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpias")
+            
             def conditions(s):
                 if (s == 'Lamparas solares' ): 
                     return "Energías limpias"
@@ -187,7 +187,7 @@ def app():
 
         # Kithchen type
         elif indicator == 'Tipo de estufa utilizada para cocinar':
-            st. write('Tipo de estufa utilizada para cocinar')
+            #st. write('Tipo de estufa utilizada para cocinar')
             kitchen =  percentage(df.kitchen)
 
             # stablishing catgeories WASH
@@ -223,7 +223,7 @@ def app():
 
 
         elif indicator ==  "Proporción de hogares que utilizan estufas con chimenea":
-            st. write("Proporcion de mujeres a exposición por contaminación de humo")
+            st. write("Este indicador muestra la proporción de mujeres a exposición por contaminación de humo")
             chimenea =  percentage(df.chimenea)
 
             fig_pie = px.pie(chimenea, values='chimenea', names='index', color='index',
@@ -241,7 +241,7 @@ def app():
         elif indicator ==   "Tiempo dedicado a cocinar los alimentos":
 
             #title
-            st. write("### Tiempo dedicado a cocinar los alimentos")
+            #st. write("### Tiempo dedicado a cocinar los alimentos")
             # tiempo en cocinar alimentos 
             time_cook =  percentage(df.time_cook)
             time_cook = time_cook.sort_values('index')
@@ -267,9 +267,9 @@ def app():
         elif indicator == 'Tiempo dedicado a recolectar combustible para el consumo doméstico':
 
             #title
-            st. write("### Tiempo dedicado a recolectar combustible para el consumo doméstico")
-            st.write( 'SDG. Indicador 7.1.2. ')
-            # tiempo en cocinar alimentos 
+            #st. write("### Tiempo dedicado a recolectar combustible para el consumo doméstico")
+            #st.write( 'SDG. Indicador 7.1.2. ')
+            
             time_transport_energy =  percentage(df.time_transport_energy)
 
             time_transport_energy['index'].unique()
@@ -299,7 +299,7 @@ def app():
                                 template = "simple_white", orientation='h'
                                 )
             fig.update_layout(title = format_title("Tiempo invertido en transportar combustible",
-                                                "Combustible. % Mujeres "),
+                                                "Para uso doméstico: cocina. % Mujeres "),
                             title_font_size = 20)
             fig.update_yaxes(tickmode="array", title_text= " ")                 
             fig.update_yaxes(showgrid=True)
