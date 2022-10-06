@@ -574,7 +574,7 @@ def app():
 
         indicator = st.selectbox("SELECCIONE UN INDICADOR",
         ("Tiempo dedicado a recolectar plantas, hongos, flores y frutos silvestres de los bosques",
-        "Quien recolecta los alimentos silvestres",
+         "Quien recolecta los alimentos silvestres",
          "Tiempo dedicado a la caza y la pesca para el consumo doméstico",
          'Tipo de estufa utilizada para cocinar',
          "Proporción de hogares que utilizan estufas con chimenea",
