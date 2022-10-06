@@ -880,4 +880,4 @@ def app():
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig, unsafe_allow_html=True)
 
-        elif indicator == "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1":       
+        #elif indicator == "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1":       
