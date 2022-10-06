@@ -83,7 +83,7 @@ def app():
 
     st.sidebar.markdown ('---')
     st.subheader("Selecciona un área de análisis")
-    choice = st.radio(" ", ('Energía (Iluminación y Cocina','Agua','Saneamiento', 'Alimentos' ))
+    choice = st.radio(" ", ('Energía (Iluminación y Cocina)','Agua','Saneamiento', 'Alimentos' ))
     st.markdown ('---')
 
 
@@ -103,7 +103,7 @@ def app():
         return f'{title}<br>{subtitle}'   
 
 
-    if choice == 'Energía (Iluminación y Cocina':
+    if choice == 'Energía (Iluminación y Cocina)':
 
       
         #Energy
@@ -115,6 +115,10 @@ def app():
         ("Proporción de la población que tiene acceso a la electricidad para iluminación",
          'Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpios',
          'Tiempo dedicado a recolectar combustible para el consumo doméstico',
+         'Tipo de estufa utilizada para cocinar',
+         "Proporción de hogares que utilizan estufas con chimenea",
+         "Tiempo dedicado a cocinar los alimentos",    
+            
         ))     
         
         #STATE AN ERROR AND DON'T SHOW THE KEYERROR 
@@ -127,7 +131,7 @@ def app():
             
             #title
             st.write("#### Proporción de la población que tiene acceso a la electricidad")
-            st.write( 'ODS. Indicador 7.1.1.')
+            st.write( 'ODS7. Indicador 7.1.1.')
             st.write("En el marco de la meta .mundial de igualdad de acceso a la energía, el ODS 7.1.1 se centra específicamente en el acceso a la electricidad disponible para la población mundial. Para obtener una imagen clara, las tarifas de acceso solo se consideran si el fuente principal de iluminación es el proveedor local de electricidad, sistemas solares, mini-redes y autónomos sistemas Fuentes como generadores, velas, baterías, etc., no se consideran por su limitada capacidades de trabajo y dado que generalmente se mantienen como fuentes de respaldo para la iluminación")
 
             def conditions(s):
@@ -158,7 +162,7 @@ def app():
             
            #title
             st. write("### Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpias")
-            st.write( 'SDG. Indicador 7.1.2. ')
+            st.write( "ODS7. Indicador 7.1.2. ')
         
             def conditions(s):
                 if (s == 'Lamparas solares' ): 
@@ -180,6 +184,84 @@ def app():
             fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
+
+        # Kithchen type
+        elif indicator == 'Tipo de estufa utilizada para cocinar':
+            st. write('Tipo de estufa utilizada para cocinar')
+            kitchen =  percentage(df.kitchen)
+
+            # stablishing catgeories WASH
+            categories = CategoricalDtype(['Estufa eléctrica',
+                                        'Estufa de biogás ',
+                                        'Estufa de gas propano con pipa de gas',
+                                        'Estufa de combustible: Gasolina, ACPM, Kerosene', 
+                                        'Estufa de leña',
+                                        'Fuego abierto'])
+
+            kitchen["index"] = kitchen["index"].astype(categories)
+            kitchen = kitchen.sort_values('index')
+            #chart
+            colors = ['lightslategray']*len(df)
+            colors[ 3 ] = '#f9ab0c'
+            colors[ 4 ] = '#f9ab0c'
+            colors[ 5 ] = '#f9ab0c'
+            fig = px.bar(kitchen, x="kitchen", y="index",  
+                                width=600, height=300, 
+                                labels={ 'kitchen': 'Proporción (%)',  'index': 'Tipo de Cocinas)'},
+                                template = "simple_white", orientation='h'
+                                )
+            fig.update_layout(title = format_title("% Tipo de Cocinas utilizadas por las Mujeres",
+                                                "con más riesgo de afectación por contaminación ambiental "),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
+
+
+        elif indicator ==  "Proporción de hogares que utilizan estufas con chimenea":
+            st. write("Proporcion de mujeres a exposición por contaminación de humo")
+            chimenea =  percentage(df.chimenea)
+
+            fig_pie = px.pie(chimenea, values='chimenea', names='index', color='index',
+                                    color_discrete_map={'No':'crimson',  'Si':'lightslategray'},
+                                                        width = 500, height = 300)
+            fig_pie.update_layout(title = format_title("% Mujeres usando chimenea en la cocina",
+                                                "Para eliminación de aire contaminado"),
+                            title_font_size = 20)
+            #fig_pie.update_layout(title="Porcentaje de Hogares usando lengua indígena", title_font_size = 25)
+            fig_pie.update_traces(textposition='inside', textfont_size=20)
+            fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig_pie, unsafe_allow_html=True)
+
+
+        elif indicator ==   "Tiempo dedicado a cocinar los alimentos":
+
+            #title
+            st. write("### Tiempo dedicado a cocinar los alimentos")
+            # tiempo en cocinar alimentos 
+            time_cook =  percentage(df.time_cook)
+            time_cook = time_cook.sort_values('index')
+            colors = ['lightslategray']*len(df)
+            colors[ 2 ] = '#f9ab0c'
+            fig = px.bar(time_cook, x="time_cook", y="index",  
+                                width=600, height=300, 
+                                labels={ 'time_cook': 'Proporción de Mujeres(%)',  'index': 'Tiempo invertido)'},
+                                template = "simple_white", orientation='h'
+                                )
+            fig.update_layout(title = format_title("Tiempo invertido en Cocinar alimentos",
+                                                "% Mujeres "),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
 
 
         elif indicator == 'Tiempo dedicado a recolectar combustible para el consumo doméstico':
@@ -577,9 +659,7 @@ def app():
          "Quien recolecta los alimentos silvestres",
          "Tiempo dedicado a la caza y la pesca para el consumo doméstico",
          "Quien pesca y caza para el hogar", 
-         'Tipo de estufa utilizada para cocinar',
-         "Proporción de hogares que utilizan estufas con chimenea",
-         "Tiempo dedicado a cocinar los alimentos",
+         "¿Quien cultiva alimentos con practicas sostenibles",
          "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1"       
         
         ))     
@@ -752,3 +832,52 @@ def app():
             fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig, unsafe_allow_html=True)
+
+
+        elif indicator == "¿Quien cultiva alimentos con practicas sostenibles":
+            # Quien cultivar en la huerta-crops
+            who_crops=  percentage(df.who_crops)
+            who_crops = who_crops.sort_values('index')
+
+            # Append the rows of the above pandas DataFrame to the existing pandas DataFrame
+            df_who_crops = pd.DataFrame({'index': ["Niña menor de 15 años",
+                                                    "Niño menor de 15 años",
+                                                    "No sé",
+                                                    "No se tiene huerta "
+                                                ], 'who_crops': [0,0,0,0],
+                                                    })
+
+            who_crops= who_crops.append(df_who_crops,ignore_index=True)
+            # stablishing catgeories 
+            categories = CategoricalDtype(["Yo ",
+                                            "Mujer mayor de 15 años diferente a mi ",
+                                            "Hombre mayor de 15 años ",
+                                            "Niña menor de 15 años",
+                                            "Niño menor de 15 años",
+                                            "No sé",
+                                            "No se tiene huerta "
+                                            ])
+            who_crops["index"] = who_crops["index"].astype(categories)
+            who_crops= who_crops.sort_values('index')            
+
+            #chart
+            colors = ['lightslategray']*len(df)
+            colors[ 1 ] = 'crimson'
+            fig = px.bar(who_crops, x="who_crops", y="index",  
+                                width=600, height=300, 
+                                labels={ 'who_crops': 'Total de hogares',  'index': 'Persona'},
+                                template = "simple_white", orientation='h'
+                                )
+
+            fig.update_layout(title = format_title("¿Quien cultiva alimentos con practicas sostenibles",
+                                                "Practicas ancestrales, agroecología, huertas"),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
+
+        elif indicator == "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1":       
