@@ -659,7 +659,7 @@ def app():
          "Quien recolecta los alimentos silvestres",
          "Tiempo dedicado a la caza y la pesca para el consumo doméstico",
          "Quien pesca y caza para el hogar", 
-         "¿Quien cultiva alimentos con practicas sostenibles",
+         "¿Quien cultiva alimentos con practicas sostenibles?",
          "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1"       
         
         ))     
@@ -834,7 +834,7 @@ def app():
             st.plotly_chart(fig, unsafe_allow_html=True)
 
 
-        elif indicator == "¿Quien cultiva alimentos con practicas sostenibles":
+        elif indicator == "¿Quien cultiva alimentos con practicas sostenibles?":
             # Quien cultivar en la huerta-crops
             who_crops=  percentage(df.who_crops)
             who_crops = who_crops.sort_values('index')
@@ -880,4 +880,40 @@ def app():
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig, unsafe_allow_html=True)
 
-        #elif indicator == "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1":       
+        elif indicator == "Tiempo dedicado al trabajo de cuidados no remunerado en prácticas sostenibles. Similar al ODS 5.4.1":       
+
+            # time sustianable practices crops
+            time_crops =  percentage(df.time_crops)
+            time_crops = time_crops.sort_values('index')
+
+            # stablishing categories 
+            categories = CategoricalDtype([ 'Menos de 1 hora',
+                                        '1 hora ', 
+                                        '2 horas', 
+                                        '3 horas', 
+                                        '4 horas ',
+                                        'Más de 4 horas ', 
+                                        'No se '
+                                            ])
+
+            time_crops["index"] = time_crops["index"].astype(categories)
+            time_crops = time_crops.sort_values('index')
+
+            #chart
+            colors = ['lightslategray']*len(df)
+            colors[ 3 ] = 'crimson'
+            fig = px.bar(time_crops, x="time_crops", y="index",  
+                                width=600, height=300, 
+                                labels={ 'time_crops': 'Proporción de Mujeres(%)',  'index': 'Tiempo invertido)'},
+                                template = "simple_white", orientation='h'
+                                )
+            fig.update_layout(title = format_title("Tiempo dedicado a la caza y la pesca",
+                                                "Para el consumo doméstico"),
+                            title_font_size = 20)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color=colors, opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
