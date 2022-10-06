@@ -82,8 +82,8 @@ def app():
     # create your radio button with the index that we loaded
 
     st.sidebar.markdown ('---')
-    st.subheader("Selecciona el área")
-    choice = st.radio(" ", ('Energía','Agua','Saneamiento', 'Alimentos y cocina' ))
+    st.subheader("Selecciona un área de análisis")
+    choice = st.radio(" ", ('Energía (Iluminación y Cocina','Agua','Saneamiento', 'Alimentos' ))
     st.markdown ('---')
 
 
@@ -103,7 +103,7 @@ def app():
         return f'{title}<br>{subtitle}'   
 
 
-    if choice == 'Energía':
+    if choice == 'Energía (Iluminación y Cocina':
 
       
         #Energy
@@ -112,7 +112,7 @@ def app():
         
 
         indicator = st.selectbox("SELECCIONE UN INDICADOR",
-        ("Proporción de la población que tiene acceso a la electricidad",
+        ("Proporción de la población que tiene acceso a la electricidad para iluminación",
          'Proporción de la población cuya fuente primaria de energía son los combustibles y tecnologías limpios',
          'Tiempo dedicado a recolectar combustible para el consumo doméstico',
         ))     
@@ -123,12 +123,12 @@ def app():
             st.stop()
 
         # Interactive visualization 
-        if indicator == "Proporción de la población que tiene acceso a la electricidad": 
+        if indicator == "Proporción de la población que tiene acceso a la electricidad para iluminación": 
             
             #title
             st.write("#### Proporción de la población que tiene acceso a la electricidad")
-            #st.write( 'SDG. Indicador 7.1.1. ')
-        
+            st.write( 'ODS. Indicador 7.1.1.')
+            st.write("En el marco de la meta .mundial de igualdad de acceso a la energía, el ODS 7.1.1 se centra específicamente en el acceso a la electricidad disponible para la población mundial. Para obtener una imagen clara, las tarifas de acceso solo se consideran si el fuente principal de iluminación es el proveedor local de electricidad, sistemas solares, mini-redes y autónomos sistemas Fuentes como generadores, velas, baterías, etc., no se consideran por su limitada capacidades de trabajo y dado que generalmente se mantienen como fuentes de respaldo para la iluminación")
 
             def conditions(s):
                 if (s == 'Lamparas solares' ) or (s == '"Lámpara de gasolina, queroseno"' ) or (s == '"Lámpara de gasolina, queroseno", Vela' )or (s == 'Linterna de pilas recargable, Vela') or  (s == 'Lámpara de aceite o parafina, Vela, Linterna de pilas recargable'): 
@@ -566,7 +566,7 @@ def app():
 
 
      
-    elif choice == 'Alimentos y cocina': 
+    elif choice == 'Alimentos': 
 
         st.subheader("## 🍓 Indicadores de acceso a Alimentos y Cocinas")  
         #st.markdown ('---')
