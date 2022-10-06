@@ -84,6 +84,8 @@ def app():
     st.sidebar.markdown ('---')
     st.subheader("Selecciona el área")
     choice = st.radio(" ", ('Energía','Agua','Saneamiento', 'Alimentos y cocina' ))
+    st.markdown ('---')
+
 
     # df in percentage
     def percentage(column):
@@ -105,7 +107,7 @@ def app():
 
       
         #Energy
-        st.subheader("## ☀️ Energía / 3 indicadores")  
+        st.subheader("## ☀️ Indicadores de Acceso a Energía")  
         #st.markdown ('---')
         
 
@@ -228,7 +230,7 @@ def app():
     elif choice == 'Agua': 
 
         #AGUA
-        st.subheader("## 🚰 Agua para consumo / 3 indicadores")  
+        st.subheader("## 🚰 Indicadores de acceso a agua para consumo")  
         #st.markdown ('---')
         
 
@@ -361,7 +363,7 @@ def app():
     elif choice == 'Saneamiento': 
 
         #AGUA
-        st.subheader("## 🚾 Saneamiento / 6 indicadores")  
+        st.subheader("## 🚾 Indicadores de acceso a Servicio de Saneamiento")  
         #st.markdown ('---')
         
 
@@ -566,7 +568,7 @@ def app():
      
     elif choice == 'Alimentos y cocina': 
 
-        st.subheader("## 🍓 Alimentos  / 6 indicadores")  
+        st.subheader("## 🍓 Indicadores de acceso a Alimentos y Cocinas")  
         #st.markdown ('---')
         
 
