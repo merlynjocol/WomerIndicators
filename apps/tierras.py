@@ -79,13 +79,86 @@ def app():
         subtitle = f'<span style="font-size: {subtitle_font_size}px;">{subtitle}</span>'
         return f'{title}<br>{subtitle}'   
 
+    # creation of columns
+    def hogar_agricola(df):    
+        if (df['trabajo_agricola'] == 'No se trabaja ninguna de las anteriores')  or (df['agricola_actividad'] == 'Trabajo asalariado para otros')  or (df['cria_actividad'] == 'Trabajo asalariado para otros'):
+            return 'No'
+        else:
+            return "Si"
+
+    def hogar_propio(df):    
+        if (df['mujer_propietaria'] ==  '"No soy propietaria, No uso, No ocupo alguna de las anteriores tierras agrícolas"') and (df['hogar_propietario'] == "No"):
+            return 'No'
+        elif (df['mujer_propietaria'] ==  '"No soy propietaria, uso u ocupo alguna de las anteriores tierras agrícolas"') and (df['hogar_propietario'] == "Si"):
+            return "Si"
+        elif (df['mujer_propietaria'] !=  '"No soy propietaria, uso u ocupo alguna de las anteriores tierras agrícolas"'):
+            return "Si"
+
+    def mujer_propietaria(df):    
+        if (df['hogar_propio'] ==  'Si') and (df['otra_propietaria'] == "Hombre mayor de 18 años"):
+            return 'Hombre'
+        elif (df['hogar_propio'] ==  'Si') and (df['otra_propietaria'] != "Hombre mayor de 18 años"):
+            return 'Mujer'
+        elif (df['hogar_propio'] ==  'Si') and (df['mujer_propietaria'] == '"No soy propietaria, No uso, No ocupo alguna de las anteriores tierras agrícolas"'):
+            return 'Mujer' 
+        else:
+            return "Hombre"
+
+    def document(s):
+        if (s == "No existe ningún documento") or (s== "No lo sabe ") or (s== 0): 
+            return "No"
+        else:
+            return "Si"
+
+
+    df['hogar_agricola'] = df.apply(hogar_agricola, axis=1)
+    df['hogar_propio'] = df.apply(hogar_propio, axis=1)
+    df["total_mujeres"] = df.apply(mujer_propietaria, axis=1)
+    df["doc_propiedad"] = df["doc_propiedad"].fillna(0)
+    df["document"] = df["doc_propiedad"].apply(document)
+
+    # df hogares agricolas
+    hogares_agricolas = df.loc[df['hogar_agricola'] == "Si"]
+
+    #Column personas con derecho_tierra
+    def people_land_right(df):    
+        if (df['hogar_agricola'] ==  'Si') and (df['hogar_propio'] ==  'Si')  and ((df['document'] == 'Si') or (df['otra_vender'] == "Si") or (df['otra_trasmitir'] == "Si") or (df["derecho_vender"] == "Si") or (df["derecho_trasmitir"] == "Si")):
+            return 'Si'
+        else:
+            return "No"
+
+    # column mujeres  con derecho_tierra
+    def mujeres_land_right(df):    
+        if (df['people_land_right'] ==  'Si')  and (df['total_mujeres'] == 'Mujer'):
+            return 'Mujer'
+        else:
+            return "Hombre"
+
+    df["people_land_right"] = df.apply(people_land_right, axis=1)
+    df["mujeres_land_right"] = df.apply(mujeres_land_right, axis=1)
+
+    new_df = df[['hogar_agricola',  
+            'hogar_propio',
+            'mujer_propietaria',
+            'otra_propietaria',
+            'total_mujeres', 
+            'doc_propiedad',
+            'document',
+            'hogar_propietario',
+            'otra_vender',
+            'otra_trasmitir', 
+            'derecho_vender',
+            'derecho_trasmitir',"people_land_right", "mujeres_land_right"]].copy()
 
     indicator = st.selectbox("SELECCIONE UN INDICADOR",
         ("Total hogares agricolas",
          'Indicador 5.a.1(a). Porcentaje de personas con propiedad o derechos seguros sobre tierras agrícolas',
          'Indicador 5.a.1.(b). Proporción de mujeres entre los propietarios o titulares de derechos de tierras agrícolas',
          
-        ))     
+        ))    
+
+
+    
 
     #STATE AN ERROR AND DON'T SHOW THE KEYERROR 
     if not indicator :
