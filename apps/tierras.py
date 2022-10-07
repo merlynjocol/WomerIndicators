@@ -95,7 +95,7 @@ def app():
         st.stop()
 
         # Interactive visualization 
-    if indicator == "Total hogares agricolas": 
+    #if indicator == "Total hogares agricolas": 
             
 
 
@@ -112,8 +112,7 @@ def app():
 
 
 
-    my_expander = st.expander("ℹ️ Indicador 5.a.1 INFO", expanded=True)
-    with my_expander:
+    with st.expander("ℹ️ Indicador 5.a.1 INFO"):
         st.markdown(""" El 5.a.1 solo se refiere a: 
             🟢 La población adulta agrícola como Todos los adultos que viven en hogares agrícolas, esto es,hogares que hayan trabajado la tierra con fines agrícolas o que hayan criado o cuidado ganado en los últimos 12 meses, con independencia del destino final de la producción. Cabe señalar que quedarán excluidos de la población de referencia los hogares cuyos miembros participen en la agricultura solo como asalariados.
             🟢 el indicador 5.a.1 se basa en tres medidas indirectas para determinar los derechos de tenencia:
