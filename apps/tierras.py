@@ -193,7 +193,7 @@ def app():
         #fig_pie.update_layout(title="Porcentaje de Hogares usando lengua indígena", title_font_size = 20)
         fig_pie.update_traces(textposition='inside', textfont_size=20)
         fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
-        #st.plotly_chart(fig_pie, unsafe_allow_html=True)
+        st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
 
 
@@ -210,7 +210,7 @@ def app():
         #fig_pie.update_layout(title="Porcentaje de Hogares usando lengua indígena", title_font_size = 20)
         fig_pie.update_traces(textposition='inside', textfont_size=20)
         fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
-        #st.plotly_chart(fig_pie, unsafe_allow_html=True)
+        st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
 
 
