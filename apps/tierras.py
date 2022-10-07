@@ -93,8 +93,22 @@ def app():
         st.stop()
 
         # Interactive visualization 
-    #if indicator == "Total hogares agricolas": 
+    if indicator == "Total hogares agricolas": 
             
+        # hogares agricolas
+        total_hogaresAgric =  percentage(new_df.hogar_agricola)
+
+        fig_pie = px.pie(total_hogaresAgric, values='hogar_agricola', names='index', color='index',
+                                color_discrete_map={'No':'lightslategray',  'Si':'#97F08A'},
+                                                    width = 500, height = 300)
+        fig_pie.update_layout(title = format_title("% de Hogares agrícolas",
+                                            " "),
+                        title_font_size = 20)
+        #fig_pie.update_layout(title="Porcentaje de Hogares usando lengua indígena", title_font_size = 20)
+        fig_pie.update_traces(textposition='inside', textfont_size=20)
+        fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+        st.plotly_chart(fig_pie, unsafe_allow_html=True)
+
 
 
 
@@ -113,17 +127,17 @@ def app():
     with st.expander("ℹ️ Indicador 5.a.1 INFO"):
         st.markdown(""" El 5.a.1 solo se refiere a: 
             
-            🟢 La población adulta agrícola como todos los adultos que viven en hogares agrícolas.
+        🟢 La población adulta agrícola como todos los adultos que viven en hogares agrícolas.
             • Hogares que hayan trabajado la tierra con fines agrícolas 
             • Hogares que hayan criado o cuidado ganado en los últimos 12 meses, con independencia del destino final de la producción. 
             • Cabe señalar que quedarán excluidos de la población de referencia los hogares cuyos miembros participen en la agricultura solo como asalariados.
             
-            🟢 El indicador 5.a.1 se basa en tres medidas indirectas para determinar los derechos de tenencia:
+        🟢 El indicador 5.a.1 se basa en tres medidas indirectas para determinar los derechos de tenencia:
             • la posesión de un documento reconocido legalmente a nombre de la persona;
             • el derecho de la persona a vender la tierra;
             • el derecho de la persona de transmitir por herencia la tierra.
 
-            🟢La presencia de una de las tres medidas indirectas es suficiente para definir a una persona como propietaria o titular de facto de derechos de tenencia de tierras agrícolas. La ventaja de este sistema es su aplicabilidad en países con distinto grado de difusión de documentos jurídicamente vinculantes.
+        🟢La presencia de una de las tres medidas indirectas es suficiente para definir a una persona como propietaria o titular de facto de derechos de tenencia de tierras agrícolas. La ventaja de este sistema es su aplicabilidad en países con distinto grado de difusión de documentos jurídicamente vinculantes.
             
             More info in: (https://www.fao.org/3/ca4885es/CA4885ES.pdf)""")
 
