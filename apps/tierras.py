@@ -112,15 +112,16 @@ def app():
 
     with st.expander("ℹ️ Indicador 5.a.1 INFO"):
         st.markdown(""" El 5.a.1 solo se refiere a: 
+            
             🟢 La población adulta agrícola como Todos los adultos que viven en hogares agrícolas, esto es,hogares que hayan trabajado la tierra con fines agrícolas o que hayan criado o cuidado ganado en los últimos 12 meses, con independencia del destino final de la producción. Cabe señalar que quedarán excluidos de la población de referencia los hogares cuyos miembros participen en la agricultura solo como asalariados.
-            🟢 el indicador 5.a.1 se basa en tres medidas indirectas para determinar los derechos de tenencia:
+            
+            🟢 El indicador 5.a.1 se basa en tres medidas indirectas para determinar los derechos de tenencia:
             • la posesión de un documento reconocido legalmente a nombre de la persona;
             • el derecho de la persona a vender la tierra;
             • el derecho de la persona de transmitir por herencia la tierra.
 
-            🟢La presencia de una de las tres medidas indirectas es suficiente para definir a una persona como propietaria o titular de facto de derechos de tenencia de tierras agrícolas. La ventaja de este sistema es su aplicabilidad en
-            países con distinto grado de difusión de documentos jurídicamente vinculantes.
-
+            🟢La presencia de una de las tres medidas indirectas es suficiente para definir a una persona como propietaria o titular de facto de derechos de tenencia de tierras agrícolas. La ventaja de este sistema es su aplicabilidad en países con distinto grado de difusión de documentos jurídicamente vinculantes.
+            
             More info in: (https://www.fao.org/3/ca4885es/CA4885ES.pdf)""")
 
                           
