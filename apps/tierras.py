@@ -113,7 +113,10 @@ def app():
     with st.expander("ℹ️ Indicador 5.a.1 INFO"):
         st.markdown(""" El 5.a.1 solo se refiere a: 
             
-            🟢 La población adulta agrícola como Todos los adultos que viven en hogares agrícolas, esto es,hogares que hayan trabajado la tierra con fines agrícolas o que hayan criado o cuidado ganado en los últimos 12 meses, con independencia del destino final de la producción. Cabe señalar que quedarán excluidos de la población de referencia los hogares cuyos miembros participen en la agricultura solo como asalariados.
+            🟢 La población adulta agrícola como todos los adultos que viven en hogares agrícolas.
+            • Hogares que hayan trabajado la tierra con fines agrícolas 
+            • Hogares que hayan criado o cuidado ganado en los últimos 12 meses, con independencia del destino final de la producción. 
+            • Cabe señalar que quedarán excluidos de la población de referencia los hogares cuyos miembros participen en la agricultura solo como asalariados.
             
             🟢 El indicador 5.a.1 se basa en tres medidas indirectas para determinar los derechos de tenencia:
             • la posesión de un documento reconocido legalmente a nombre de la persona;
