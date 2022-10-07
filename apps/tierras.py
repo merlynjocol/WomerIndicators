@@ -180,7 +180,7 @@ def app():
         st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
 
-    if indicator == "Indicador 5.a.1(a). Porcentaje de personas con propiedad o derechos seguros sobre tierras agrícolas" : 
+    elif indicator == "Indicador 5.a.1(a). Porcentaje de personas con propiedad o derechos seguros sobre tierras agrícolas" : 
         # derecho a tierras
         people_land_rights =  percentage(new_df.people_land_right)
 
@@ -197,7 +197,7 @@ def app():
 
 
 
-    if indicator == 'Indicador 5.a.1.(b). Proporción de mujeres entre los propietarios o titulares de derechos de tierras agrícolas':
+    elif indicator == 'Indicador 5.a.1.(b). Proporción de mujeres entre los propietarios o titulares de derechos de tierras agrícolas':
         
         mujeres_land_right =  percentage(new_df.mujeres_land_right)
 
