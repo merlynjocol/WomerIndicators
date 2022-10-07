@@ -4,7 +4,7 @@ Streamlit App
 # pylint: disable=wrong-import-order
 
 import streamlit as st
-from apps import home, poblacion, about, recursos, clima, knowledge, participation
+from apps import home, poblacion, about, recursos, tierras, clima, knowledge, participation
 from streamlit_option_menu import option_menu
 from PIL import Image
 
@@ -29,6 +29,7 @@ apps = [
     {"func": home.app, "title": "Principal", "icon": "house"},
     {"func": poblacion.app, "title": "Población", "icon": "person-circle"},
     {"func": recursos.app, "title": "Recursos", "icon": "droplet"},
+    {"func": tierras.app, "title": "Tierras", "icon": "image-alt"},
     {"func": clima.app, "title": "Clima", "icon": "cloud-hail"},
     {"func": knowledge.app, "title": "Saberes ancestrales", "icon": "chat-left-dots"},
     {"func": participation.app, "title": "Participación", "icon": "hand-index"},
