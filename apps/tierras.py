@@ -150,24 +150,21 @@ def app():
             'derecho_vender',
             'derecho_trasmitir',"people_land_right", "mujeres_land_right"]].copy()
 
+
+    #indicadores selection
     indicator = st.selectbox("SELECCIONE UN INDICADOR",
         ("Total hogares agricolas",
          'Indicador 5.a.1(a). Porcentaje de personas con propiedad o derechos seguros sobre tierras agrícolas',
          'Indicador 5.a.1.(b). Proporción de mujeres entre los propietarios o titulares de derechos de tierras agrícolas',
          
-        ))    
-
-
-    
-
+        )) 
     #STATE AN ERROR AND DON'T SHOW THE KEYERROR 
     if not indicator :
         st.error(" ⚠️ Por favor seleccione un indicador")
         st.stop()
 
-        # Interactive visualization 
+    # Interactive visualization 
     if indicator == "Total hogares agricolas": 
-            
         # hogares agricolas
         total_hogaresAgric =  percentage(new_df.hogar_agricola)
 
@@ -183,16 +180,36 @@ def app():
         st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
 
+    if indicator == "Indicador 5.a.1(a). Porcentaje de personas con propiedad o derechos seguros sobre tierras agrícolas" : 
+        # derecho a tierras
+        people_land_rights =  percentage(new_df.people_land_right)
+
+        fig_pie = px.pie(people_land_rights, values='people_land_right', names='index', color='index',
+                                color_discrete_map={'No':'lightslategray',  'Si':'#97F08A'},
+                                                    width = 500, height = 300)
+        fig_pie.update_layout(title = format_title("% Personas con propiedad o derechos",
+                                                    "Sobre tierras agrícolas"),
+                        title_font_size = 20)
+        #fig_pie.update_layout(title="Porcentaje de Hogares usando lengua indígena", title_font_size = 20)
+        fig_pie.update_traces(textposition='inside', textfont_size=20)
+        fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+        #st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
 
 
+    if indicator == 'Indicador 5.a.1.(b). Proporción de mujeres entre los propietarios o titulares de derechos de tierras agrícolas':
+        mujeres_land_right =  percentage(new_df.mujeres_land_right)
 
-
-
-
-
-
-
+        fig_pie = px.pie(mujeres_land_right, values='mujeres_land_right', names='index', color='index',
+                                color_discrete_map={'Hombre':'lightslategray',  'Mujer':'#7C6DC2'},
+                                                    width = 500, height = 300)
+        fig_pie.update_layout(title = format_title("% Mujeres con propiedad o derechos",
+                                                    "Sobre tierras agrícolas"),
+                        title_font_size = 20)
+        #fig_pie.update_layout(title="Porcentaje de Hogares usando lengua indígena", title_font_size = 20)
+        fig_pie.update_traces(textposition='inside', textfont_size=20)
+        fig_pie.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+        #st.plotly_chart(fig_pie, unsafe_allow_html=True)
 
 
 
