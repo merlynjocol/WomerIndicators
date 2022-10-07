@@ -202,7 +202,7 @@ def app():
         mujeres_land_right =  percentage(new_df.mujeres_land_right)
 
         fig_pie = px.pie(mujeres_land_right, values='mujeres_land_right', names='index', color='index',
-                                color_discrete_map={'Hombre':'lightslategray',  'Mujer':'#A84D9F'},
+                                color_discrete_map={'Hombre':'lightslategray',  'Mujer':'#B63B86'},
                                                     width = 500, height = 300)
         fig_pie.update_layout(title = format_title("% Mujeres con propiedad o derechos",
                                                     "Sobre tierras agrícolas"),
