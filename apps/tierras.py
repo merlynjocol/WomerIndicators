@@ -4,7 +4,6 @@ import datetime
 from datetime import datetime, timedelta
 import plotly.graph_objects as go
 import plotly.express as px
-import folium
 from IPython.display import HTML
 from pandas.api.types import CategoricalDtype
 
