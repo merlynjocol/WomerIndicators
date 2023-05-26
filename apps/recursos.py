@@ -143,9 +143,9 @@ def app():
 
             df['Electricity'] = df['how_lighting'].apply(conditions)
             
-            st.dataframe(df)
+           
             electricity =  percentage(df.Electricity)
-            st.dataframe(electricity)
+         
             fig_pie = px.pie(electricity, values='count', names='Electricity', color='Electricity',
                                     color_discrete_map={'No':'lightslategray',  'Si':'#f9ab0c'},
                                                         width = 500, height = 300)
@@ -173,7 +173,7 @@ def app():
             
             df['clean_fuel'] = df['how_lighting'].apply(conditions)
             clean_fuel =  percentage(df.clean_fuel)
-
+            st.dataframe(clean_fuel)
             fig_pie = px.pie(clean_fuel, values='clean_fuel', names='index', color='index',
                                     color_discrete_map={'Energías limpias':'#f9ab0c',  'Energias fósiles o químicas':'lightslategray'},
                                                         width = 500, height = 300)
