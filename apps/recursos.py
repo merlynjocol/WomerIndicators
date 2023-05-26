@@ -145,7 +145,7 @@ def app():
             
             st.dataframe(df)
             electricity =  percentage(df.Electricity)
-
+            st.dataframe(electricity)
             fig_pie = px.pie(electricity, values='Electricity', names='index', color='index',
                                     color_discrete_map={'No':'lightslategray',  'Si':'#f9ab0c'},
                                                         width = 500, height = 300)
