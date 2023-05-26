@@ -146,7 +146,7 @@ def app():
             st.dataframe(df)
             electricity =  percentage(df.Electricity)
             st.dataframe(electricity)
-            fig_pie = px.pie(electricity, values='Electricity', names='count', color='count',
+            fig_pie = px.pie(electricity, values='count', names='Electricity', color='Electricity',
                                     color_discrete_map={'No':'lightslategray',  'Si':'#f9ab0c'},
                                                         width = 500, height = 300)
             fig_pie.update_layout(title = format_title("% Mujeres con acceso a la Electricidad",
