@@ -206,6 +206,7 @@ def app():
             colors[ 3 ] = '#f9ab0c'
             colors[ 4 ] = '#f9ab0c'
             colors[ 5 ] = '#f9ab0c'
+            st.dataframe(kitchen)
             fig = px.bar(kitchen, x="kitchen", y="index",  
                                 width=600, height=300, 
                                 labels={ 'kitchen': 'Proporción (%)',  'index': 'Tipo de Cocinas)'},
