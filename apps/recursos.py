@@ -143,7 +143,7 @@ def app():
 
             df['Electricity'] = df['how_lighting'].apply(conditions)
             
-            df.head(3)
+            st.dataframe(df)
             electricity =  percentage(df.Electricity)
 
             fig_pie = px.pie(electricity, values='Electricity', names='index', color='index',
