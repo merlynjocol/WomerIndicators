@@ -174,7 +174,7 @@ def app():
             df['clean_fuel'] = df['how_lighting'].apply(conditions)
             clean_fuel =  percentage(df.clean_fuel)
             st.dataframe(clean_fuel)
-            fig_pie = px.pie(clean_fuel, values='clean_fuel', names='index', color='index',
+            fig_pie = px.pie(clean_fuel, values='count', names='clean_fuel', color='clean_fuel',
                                     color_discrete_map={'Energías limpias':'#f9ab0c',  'Energias fósiles o químicas':'lightslategray'},
                                                         width = 500, height = 300)
             fig_pie.update_layout(title = format_title("% Mujeres con acceso a Energías limpias",
