@@ -249,6 +249,7 @@ def app():
             # tiempo en cocinar alimentos 
             time_cook =  percentage(df.time_cook)
             time_cook = time_cook.sort_values('index')
+            st.dataframe(time_cook)
             colors = ['lightslategray']*len(df)
             colors[ 2 ] = '#f9ab0c'
             fig = px.bar(time_cook, x="time_cook", y="index",  
