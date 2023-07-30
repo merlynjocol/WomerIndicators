@@ -8,7 +8,7 @@ This project is part of the #Open17ClimateGender challenge to develop crowdsourc
 
 # WebApp
 
-Here is the [link](https://merlynjocol-womer-webapp-streamlit-app-cfv6ve.streamlit.app/)
+Here is the [link](https://womerclimatedata.streamlit.app/)
 
 
 ## Data indicators: 
