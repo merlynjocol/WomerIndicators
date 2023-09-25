@@ -67,8 +67,7 @@ data.rename(columns=dict,
           inplace=True)
 
 df = data.copy(deep=True)
-st.write( 'here all data_main dataframe ') ## new add
-st.dataframe(df) 
+
 
 def app():
     """
@@ -85,7 +84,8 @@ def app():
     st.subheader("Selecciona un área de análisis")
     choice = st.radio(" ", ('Energía (Iluminación y Cocina)','Agua','Saneamiento', 'Alimentos' ))
     st.markdown ('---')
-
+    st.write( 'DATAFRAME')
+    st.dataframe(df)
 
     # df in percentage
     def percentage(column):
