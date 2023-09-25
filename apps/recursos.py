@@ -189,10 +189,30 @@ def app():
         # Kithchen type
         elif indicator == 'Tipo de estufa utilizada para cocinar':
             st. write('Tipo de estufa utilizada para cocinar')
-            kitchen =  percentage(df.kitchen)
+            #kitchen =  percentage(df.kitchen)
+
+            kitchen= df.groupby(['kitchen'])['ec5_uuid'].count().reset_index()
+            kitchen = kitchen.sort_values('ec5_uuid')
+
+--
+            fig = px.bar(kitchen, y='kitchen', x="ec5_uuid",  
+                        width=500, height=300, 
+                        labels={ 'kitchen': 'Cocinas',  'ec5_uuid': 'Total Mujeres'},
+                        orientation='h', 
+                        )
+            fig.update_layout(title = "Cocinas! `",  title_font_size = 25)
+            fig.update_yaxes(tickmode="array", title_text= " ")                 
+            fig.update_yaxes(showgrid=True)
+            fig.update_traces(marker_color='#24b3ab', opacity = 0.8)
+            fig.update_layout(template = "simple_white")
+            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            st.plotly_chart(fig, unsafe_allow_html=True)
+
+
 
             # stablishing catgeories WASH
-            categories = CategoricalDtype(['Estufa eléctrica',
+            '''categories = CategoricalDtype(['Estufa eléctrica',
                                         'Estufa de biogás ',
                                         'Estufa de gas propano con pipa de gas',
                                         'Estufa de combustible: Gasolina, ACPM, Kerosene', 
@@ -201,15 +221,16 @@ def app():
 
             kitchen["index"] = kitchen["index"].astype(categories)
             kitchen = kitchen.sort_values('index')
-            st.dataframe(kitchen)
-            #chart
+           
+           #chart
             colors = ['lightslategray']*len(df)
             colors[ 3 ] = '#f9ab0c'
             colors[ 4 ] = '#f9ab0c'
             colors[ 5 ] = '#f9ab0c'
+            '''
             
             
-            fig = px.bar(kitchen, x="kitchen", y="index",  
+            '''fig = px.bar(kitchen, x="kitchen", y="index",  
                                 width=600, height=300, 
                                 labels={ 'kitchen': 'Proporción (%)',  'index': 'Tipo de Cocinas)'},
                                 template = "simple_white", orientation='h'
@@ -223,7 +244,7 @@ def app():
             fig.update_layout(template = "simple_white")
             fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
-            st.plotly_chart(fig, unsafe_allow_html=True)
+            st.plotly_chart(fig, unsafe_allow_html=True) '''
 
 
         elif indicator ==  "Proporción de hogares que utilizan estufas con chimenea":
