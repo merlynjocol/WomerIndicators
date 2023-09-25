@@ -212,39 +212,39 @@ def app():
 
 
             # stablishing catgeories WASH
-            '''categories = CategoricalDtype(['Estufa eléctrica',
+            #categories = CategoricalDtype(['Estufa eléctrica',
                                         'Estufa de biogás ',
                                         'Estufa de gas propano con pipa de gas',
                                         'Estufa de combustible: Gasolina, ACPM, Kerosene', 
                                         'Estufa de leña',
                                         'Fuego abierto'])
 
-            kitchen["index"] = kitchen["index"].astype(categories)
-            kitchen = kitchen.sort_values('index')
+            #kitchen["index"] = kitchen["index"].astype(categories)
+            #kitchen = kitchen.sort_values('index')
            
            #chart
             colors = ['lightslategray']*len(df)
             colors[ 3 ] = '#f9ab0c'
             colors[ 4 ] = '#f9ab0c'
             colors[ 5 ] = '#f9ab0c'
-            '''
+
             
             
-            '''fig = px.bar(kitchen, x="kitchen", y="index",  
+            #fig = px.bar(kitchen, x="kitchen", y="index",  
                                 width=600, height=300, 
                                 labels={ 'kitchen': 'Proporción (%)',  'index': 'Tipo de Cocinas)'},
                                 template = "simple_white", orientation='h'
                                 )
-            fig.update_layout(title = format_title("% Tipo de Cocinas utilizadas por las Mujeres",
+            #fig.update_layout(title = format_title("% Tipo de Cocinas utilizadas por las Mujeres",
                                                 "con más riesgo de afectación por contaminación ambiental "),
                             title_font_size = 20)
-            fig.update_yaxes(tickmode="array", title_text= " ")                 
-            fig.update_yaxes(showgrid=True)
-            fig.update_traces(marker_color=colors, opacity = 0.8)
-            fig.update_layout(template = "simple_white")
-            fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
-            fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
-            st.plotly_chart(fig, unsafe_allow_html=True) '''
+            #fig.update_yaxes(tickmode="array", title_text= " ")                 
+            #fig.update_yaxes(showgrid=True)
+            #fig.update_traces(marker_color=colors, opacity = 0.8)
+            #fig.update_layout(template = "simple_white")
+            #fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
+            #fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
+            #st.plotly_chart(fig, unsafe_allow_html=True)
 
 
         elif indicator ==  "Proporción de hogares que utilizan estufas con chimenea":
