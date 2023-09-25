@@ -194,7 +194,6 @@ def app():
             kitchen= df.groupby(['kitchen'])['ec5_uuid'].count().reset_index()
             kitchen = kitchen.sort_values('ec5_uuid')
 
---
             fig = px.bar(kitchen, y='kitchen', x="ec5_uuid",  
                         width=500, height=300, 
                         labels={ 'kitchen': 'Cocinas',  'ec5_uuid': 'Total Mujeres'},
