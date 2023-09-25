@@ -245,6 +245,7 @@ def app():
             #fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
             #fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             #st.plotly_chart(fig, unsafe_allow_html=True)
+            # FIN DE LOS CAMBIOS 
 
 
         elif indicator ==  "Proporción de hogares que utilizan estufas con chimenea":
