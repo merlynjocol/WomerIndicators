@@ -190,7 +190,7 @@ def app():
         elif indicator == 'Tipo de estufa utilizada para cocinar':
             st. write('Tipo de estufa utilizada para cocinar')
             #kitchen =  percentage(df.kitchen)
-
+            '''
             kitchen= df.groupby(['kitchen'])['ec5_uuid'].count().reset_index()
             kitchen = kitchen.sort_values('ec5_uuid')
 
@@ -207,7 +207,8 @@ def app():
             fig.update_layout(paper_bgcolor="rgb(255, 255, 255)", plot_bgcolor=" rgb(255, 255, 255)")
             fig.update_layout(margin={"r":80,"t":110,"l":0,"b":0})
             st.plotly_chart(fig, unsafe_allow_html=True)
-            #REMOVE ___
+            #REMOVE 
+            '''
 
 
 
@@ -223,10 +224,10 @@ def app():
             #kitchen = kitchen.sort_values('index')
            
            #chart
-            colors = ['lightslategray']*len(df)
-            colors[ 3 ] = '#f9ab0c'
-            colors[ 4 ] = '#f9ab0c'
-            colors[ 5 ] = '#f9ab0c'
+            #colors = ['lightslategray']*len(df)
+            #colors[ 3 ] = '#f9ab0c'
+            #colors[ 4 ] = '#f9ab0c'
+            #colors[ 5 ] = '#f9ab0c'
 
             
             
