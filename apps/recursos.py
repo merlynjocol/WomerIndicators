@@ -67,8 +67,8 @@ data.rename(columns=dict,
           inplace=True)
 
 df = data.copy(deep=True)
-
-
+st.write( 'here all data_main dataframe ') ## new add
+st.dataframe(df) 
 
 def app():
     """
@@ -188,7 +188,7 @@ def app():
 
         # Kithchen type
         elif indicator == 'Tipo de estufa utilizada para cocinar':
-            #st. write('Tipo de estufa utilizada para cocinar')
+            st. write('Tipo de estufa utilizada para cocinar')
             kitchen =  percentage(df.kitchen)
 
             # stablishing catgeories WASH
