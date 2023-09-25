@@ -188,7 +188,7 @@ def app():
 
         # Kithchen type
         elif indicator == 'Tipo de estufa utilizada para cocinar':
-            st. write('Tipo de estufa utilizada para cocinar')
+            st.write('Tipo de estufa utilizada para cocinar')
             #kitchen =  percentage(df.kitchen)
             st.write ("NO HAY ERROR")
 
@@ -205,7 +205,7 @@ def app():
             #kitchen["index"] = kitchen["index"].astype(categories)
             #kitchen = kitchen.sort_values('index')
            
-           #chart
+            #chart
             #colors = ['lightslategray']*len(df)
             #colors[ 3 ] = '#f9ab0c'
             #colors[ 4 ] = '#f9ab0c'
